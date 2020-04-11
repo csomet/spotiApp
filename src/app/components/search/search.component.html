@@ -1,0 +1,14 @@
+<div *ngIf="errorMessage !=''" class="alert alert-danger" role="alert">
+    {{errorMessage}}
+</div>
+<div class="row">
+    <div class="col">
+        <div>
+            <input #query type="text" (keyup)="search(query.value)" class="from-control" placeholder="Search artist..."/>
+        </div>
+    </div>
+</div>
+
+<app-loading  *ngIf="isLoading"></app-loading>
+
+<app-cards *ngIf="!isLoading && errorMessage===''" [items]="artists"></app-cards>

@@ -1,0 +1,5 @@
+<div *ngIf="errorMessage!=''" class="alert alert-danger" role="alert">
+   {{errorMessage}}
+</div>
+<app-loading  *ngIf="isLoading"></app-loading>
+<app-cards *ngIf="!isLoading && errorMessage===''" [items]="featuredSongs"></app-cards>

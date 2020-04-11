@@ -1,0 +1,23 @@
+<div *ngIf="items && !items[0].genres; else elseBlock" class="card-columns m-5 animated fadeIn">
+    <div (click)="showArtist(item)" *ngFor="let item of items" class="card puntero">
+      <img [src]="item.images | noimage" class="card-img-top" alt="{{item.name}}">
+      <div class="card-body">
+        <h5 class="card-title">{{item.name}} - {{item.artists[0].name}}</h5>
+        <p *ngIf="item.album_type === 'single'" class="card-text">Featured <span class="badge badge-pill badge-success">{{item.album_type}}</span> </p>
+        <p *ngIf="item.album_type === 'album'" class="card-text">Featured <span class="badge badge-pill badge-primary">{{item.album_type}}</span> </p>
+      </div>
+    </div>
+</div>
+
+<ng-template #elseBlock>
+    <div class="card-columns m-5 animated fadeIn">
+        <div (click)="showArtist(item)" *ngFor="let item of items"  class="card puntero">
+          <img [src]="item.images | noimage" class="card-img-top">
+          <div class="card-body">
+            <h5 class="card-title">{{item.name}} Profile <span class="badge badge-dark">{{item.followers.total}} followers</span>
+                <span class="sr-only"></span></h5>
+                <span *ngFor="let genre of item.genres" class="badge badge-primary">{{genre}}</span>
+          </div>
+        </div>
+    </div>
+</ng-template>
